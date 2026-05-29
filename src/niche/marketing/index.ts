@@ -1,7 +1,2 @@
-export { Composition as MarketingTip, MarketingTipSchema } from './video/MarketingTip'
-export { Composition as BrandStrategy, BrandStrategySchema } from './video/BrandStrategy'
-export { Composition as AdCopy, AdCopySchema } from './video/AdCopy'
-export { Composition as ContentStrategy, ContentStrategySchema } from './video/ContentStrategy'
-export { Composition as CaseStudy, CaseStudySchema } from './video/CaseStudy'
-export { Composition as FunnelGraphic, FunnelGraphicSchema } from './image/FunnelGraphic'
+export { Composition, MarketingTipSchema } from './video/index'
 export { Composition as BrandKit, BrandKitSchema } from './image/BrandKit'

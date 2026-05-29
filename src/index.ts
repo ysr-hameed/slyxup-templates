@@ -4,65 +4,30 @@ export { PLATFORM_DIMENSIONS, PLATFORM_LABELS, FORMAT_LABELS } from '@slyxup/tem
 export { palette, font, spacing } from './niche/shared'
 
 export {
-  MorningMotivation, MorningMotivationSchema,
-  SuccessStory, SuccessStorySchema,
-  DailyQuote, DailyQuoteSchema,
-  GoalVisualizer, GoalVisualizerSchema,
-  AffirmationReel, AffirmationReelSchema,
-  QuotePoster, QuotePosterSchema,
+  Composition as MotivationalQuote, MotivationalSchema as MotivationalQuoteSchema,
   VisionBoard, VisionBoardSchema,
 } from './niche/motivational'
 export {
-  FinanceTip, FinanceTipSchema,
-  StockMarketUpdate, StockMarketUpdateSchema,
-  BudgetPlanner, BudgetPlannerSchema,
-  WealthJourney, WealthJourneySchema,
-  CryptoUpdate, CryptoUpdateSchema,
-  SavingsGoal, SavingsGoalSchema,
+  Composition as FinanceTip, FinanceTipSchema,
   InvestmentSummary, InvestmentSummarySchema,
 } from './niche/finance'
 export {
-  TechNews, TechNewsSchema,
-  CodeTutorial, CodeTutorialSchema,
-  GadgetReview, GadgetReviewSchema,
-  DevLifeHack, DevLifeHackSchema,
-  AIvsHuman, AIvsHumanSchema,
-  TechSpecsCard, TechSpecsCardSchema,
+  Composition as TechNews, TechNewsSchema,
   AppShowcase, AppShowcaseSchema,
 } from './niche/tech'
 export {
-  WorkoutTip, WorkoutTipSchema,
-  ExerciseDemo, ExerciseDemoSchema,
-  NutritionGuide, NutritionGuideSchema,
-  TransformationStory, TransformationStorySchema,
-  RecoveryTip, RecoveryTipSchema,
-  ExerciseCard, ExerciseCardSchema,
+  Composition as WorkoutTip, WorkoutTipSchema,
   ProgressTracker, ProgressTrackerSchema,
 } from './niche/fitness'
 export {
-  MarketingTip, MarketingTipSchema,
-  BrandStrategy, BrandStrategySchema,
-  AdCopy, AdCopySchema,
-  ContentStrategy, ContentStrategySchema,
-  CaseStudy, CaseStudySchema,
-  FunnelGraphic, FunnelGraphicSchema,
+  Composition as MarketingTip, MarketingTipSchema,
   BrandKit, BrandKitSchema,
 } from './niche/marketing'
 export {
-  HistoryFact, HistoryFactSchema,
-  Timeline, TimelineSchema,
-  HistoricalFigure, HistoricalFigureSchema,
-  InventionStory, InventionStorySchema,
-  EraComparison, EraComparisonSchema,
-  DidYouKnow, DidYouKnowSchema,
+  Composition as HistoryFact, HistoryFactSchema,
   EraSnapshot, EraSnapshotSchema,
 } from './niche/history'
 export {
-  ScienceExplained, ScienceExplainedSchema,
-  StudyTips, StudyTipsSchema,
-  HowItWorks, HowItWorksSchema,
-  MythBuster, MythBusterSchema,
-  QuickFacts, QuickFactsSchema,
-  FlashCard, FlashCardSchema,
+  Composition as AiFacts, AiFactsSchema,
   ConceptMap, ConceptMapSchema,
 } from './niche/educational'

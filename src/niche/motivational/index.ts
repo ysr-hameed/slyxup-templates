@@ -1,7 +1,2 @@
-export { Composition as MorningMotivation, MorningMotivationSchema } from './video/MorningMotivation'
-export { Composition as SuccessStory, SuccessStorySchema } from './video/SuccessStory'
-export { Composition as DailyQuote, MotivationalSchema as DailyQuoteSchema } from './video/DailyQuote'
-export { Composition as GoalVisualizer, GoalVisualizerSchema } from './video/GoalVisualizer'
-export { Composition as AffirmationReel, AffirmationReelSchema } from './video/AffirmationReel'
-export { Composition as QuotePoster, QuotePosterSchema } from './image/QuotePoster'
+export { Composition, MotivationalSchema } from './video/index'
 export { Composition as VisionBoard, VisionBoardSchema } from './image/VisionBoard'

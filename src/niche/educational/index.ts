@@ -1,5 +1,7 @@
 export { Composition as ScienceExplained, AiFactsSchema as ScienceExplainedSchema } from './video/ScienceExplained'
 export { Composition as StudyTips, StudyTipsSchema } from './video/StudyTips'
 export { Composition as HowItWorks, HowItWorksSchema } from './video/HowItWorks'
+export { Composition as MythBuster, MythBusterSchema } from './video/MythBuster'
+export { Composition as QuickFacts, QuickFactsSchema } from './video/QuickFacts'
 export { Composition as FlashCard, FlashCardSchema } from './image/FlashCard'
 export { Composition as ConceptMap, ConceptMapSchema } from './image/ConceptMap'

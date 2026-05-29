@@ -1,5 +1,7 @@
 export { Composition as TechNews, TechNewsSchema } from './video/TechNews'
 export { Composition as CodeTutorial, CodeTutorialSchema } from './video/CodeTutorial'
 export { Composition as GadgetReview, GadgetReviewSchema } from './video/GadgetReview'
+export { Composition as DevLifeHack, DevLifeHackSchema } from './video/DevLifeHack'
+export { Composition as AIvsHuman, AIvsHumanSchema } from './video/AIvsHuman'
 export { Composition as TechSpecsCard, TechSpecsCardSchema } from './image/TechSpecsCard'
 export { Composition as AppShowcase, AppShowcaseSchema } from './image/AppShowcase'

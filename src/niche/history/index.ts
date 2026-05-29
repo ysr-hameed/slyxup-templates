@@ -1,5 +1,7 @@
 export { Composition as HistoryFact, HistoryFactSchema } from './video/HistoryFact'
 export { Composition as Timeline, TimelineSchema } from './video/Timeline'
 export { Composition as HistoricalFigure, HistoricalFigureSchema } from './video/HistoricalFigure'
+export { Composition as InventionStory, InventionStorySchema } from './video/InventionStory'
+export { Composition as EraComparison, EraComparisonSchema } from './video/EraComparison'
 export { Composition as DidYouKnow, DidYouKnowSchema } from './image/DidYouKnow'
 export { Composition as EraSnapshot, EraSnapshotSchema } from './image/EraSnapshot'

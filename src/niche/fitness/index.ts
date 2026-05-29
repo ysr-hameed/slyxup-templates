@@ -1,1 +1,5 @@
-export { Composition as WorkoutTip, WorkoutTipSchema } from './video'
+export { Composition as WorkoutTip, WorkoutTipSchema } from './video/WorkoutTip'
+export { Composition as ExerciseDemo, ExerciseDemoSchema } from './video/ExerciseDemo'
+export { Composition as NutritionGuide, NutritionGuideSchema } from './video/NutritionGuide'
+export { Composition as ExerciseCard, ExerciseCardSchema } from './image/ExerciseCard'
+export { Composition as ProgressTracker, ProgressTrackerSchema } from './image/ProgressTracker'

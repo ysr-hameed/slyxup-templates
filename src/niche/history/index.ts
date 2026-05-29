@@ -1,1 +1,5 @@
-export { Composition as HistoryFact, HistoryFactSchema } from './video'
+export { Composition as HistoryFact, HistoryFactSchema } from './video/HistoryFact'
+export { Composition as Timeline, TimelineSchema } from './video/Timeline'
+export { Composition as HistoricalFigure, HistoricalFigureSchema } from './video/HistoricalFigure'
+export { Composition as DidYouKnow, DidYouKnowSchema } from './image/DidYouKnow'
+export { Composition as EraSnapshot, EraSnapshotSchema } from './image/EraSnapshot'

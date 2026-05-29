@@ -1,1 +1,5 @@
-export { Composition as FinanceTip, FinanceTipSchema } from './video'
+export { Composition as FinanceTip, FinanceTipSchema } from './video/FinanceTip'
+export { Composition as StockMarketUpdate, StockMarketUpdateSchema } from './video/StockMarketUpdate'
+export { Composition as BudgetPlanner, BudgetPlannerSchema } from './video/BudgetPlanner'
+export { Composition as SavingsGoal, SavingsGoalSchema } from './image/SavingsGoal'
+export { Composition as InvestmentSummary, InvestmentSummarySchema } from './image/InvestmentSummary'

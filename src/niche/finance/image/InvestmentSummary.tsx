@@ -4,7 +4,7 @@ import { AbsoluteFill } from 'remotion'
 export const InvestmentSummarySchema = {
   title: { type: 'text' as const, label: 'Title', required: true },
   returns: { type: 'text' as const, label: 'Returns (e.g. +18.5%)', required: true },
-  breakdown: { type: 'list' as const, label: 'Breakdown items', itemType: 'text', required: true },
+  breakdown: { type: 'list' as const, label: 'Breakdown items', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#0a1628' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#f59e0b' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#ffffff' },

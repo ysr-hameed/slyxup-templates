@@ -56,7 +56,7 @@ function EventCard({ events, textColor, accentColor }: { events: string[]; textC
 
 export const TimelineSchema = {
   title: { type: 'text' as const, label: 'Timeline Title', required: true },
-  events: { type: 'list' as const, label: 'Events (chronological)', itemType: 'text', required: true },
+  events: { type: 'list' as const, label: 'Events (chronological)', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#1c1108' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#d4a574' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#f5e6d3' },

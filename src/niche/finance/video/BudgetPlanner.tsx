@@ -57,7 +57,7 @@ function BreakdownCard({ categories, accentColor, textColor }: { categories: str
 
 export const BudgetPlannerSchema = {
   title: { type: 'text' as const, label: 'Title', required: true },
-  categories: { type: 'list' as const, label: 'Categories (format: Name:Amount)', itemType: 'text', required: true },
+  categories: { type: 'list' as const, label: 'Categories (format: Name:Amount)', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#0a1628' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#06b6d4' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#ffffff' },

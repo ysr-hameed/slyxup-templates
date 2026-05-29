@@ -53,7 +53,7 @@ function TipCard({ tips, textColor, accentColor }: { tips: string[]; textColor: 
 
 export const NutritionGuideSchema = {
   title: { type: 'text' as const, label: 'Title', required: true },
-  tips: { type: 'list' as const, label: 'Nutrition Tips', itemType: 'text', required: true },
+  tips: { type: 'list' as const, label: 'Nutrition Tips', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#0a1a0a' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#22c55e' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#ffffff' },

@@ -3,7 +3,7 @@ import { AbsoluteFill } from 'remotion'
 
 export const TechSpecsCardSchema = {
   product: { type: 'text' as const, label: 'Product Name', required: true },
-  specs: { type: 'list' as const, label: 'Specs (format: Name:Value)', itemType: 'text', required: true },
+  specs: { type: 'list' as const, label: 'Specs (format: Name:Value)', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#0d1117' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#58a6ff' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#c9d1d9' },

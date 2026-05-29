@@ -1,0 +1,26 @@
+{
+  "name": "@slyxup/template-workout-tip",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./manifest": "./manifest.json"
+  },
+  "files": ["dist", "manifest.json"],
+  "scripts": { "build": "tsc" },
+  "dependencies": {
+    "react": "^19.0.0",
+    "remotion": "^4.0.0",
+    "@slyxup/templates-core": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^6.0.2"
+  }
+}

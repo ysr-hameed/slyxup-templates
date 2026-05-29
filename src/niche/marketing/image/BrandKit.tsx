@@ -3,7 +3,7 @@ import { AbsoluteFill } from 'remotion'
 
 export const BrandKitSchema = {
   brandName: { type: 'text' as const, label: 'Brand Name', required: true },
-  colors: { type: 'list' as const, label: 'Color Palette (hex codes)', itemType: 'text', required: true },
+  colors: { type: 'list' as const, label: 'Color Palette (hex codes)', itemType: 'text' as const, required: true },
   fonts: { type: 'text' as const, label: 'Font Family', required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#0f0a1a' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#a855f7' },

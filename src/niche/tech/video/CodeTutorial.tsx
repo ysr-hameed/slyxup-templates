@@ -49,7 +49,7 @@ function CodeCard({ code, accentColor, textColor }: { code: string[]; accentColo
 
 export const CodeTutorialSchema = {
   title: { type: 'text' as const, label: 'Title', required: true },
-  code: { type: 'list' as const, label: 'Code Lines', itemType: 'text', required: true },
+  code: { type: 'list' as const, label: 'Code Lines', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#0d1117' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#58a6ff' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#c9d1d9' },

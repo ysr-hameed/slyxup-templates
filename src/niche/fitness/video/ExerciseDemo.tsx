@@ -53,7 +53,7 @@ function DemoCard({ steps, textColor, accentColor }: { steps: string[]; textColo
 
 export const ExerciseDemoSchema = {
   exercise: { type: 'text' as const, label: 'Exercise Name', required: true },
-  steps: { type: 'list' as const, label: 'Steps', itemType: 'text', required: true },
+  steps: { type: 'list' as const, label: 'Steps', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#1a0a0a' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#f97316' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#ffffff' },

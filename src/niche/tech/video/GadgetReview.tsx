@@ -55,7 +55,7 @@ function FeaturesCard({ features, accentColor, textColor }: { features: string[]
 export const GadgetReviewSchema = {
   name: { type: 'text' as const, label: 'Product Name', required: true },
   tagline: { type: 'text' as const, label: 'Tagline', required: true },
-  features: { type: 'list' as const, label: 'Features', itemType: 'text', required: true },
+  features: { type: 'list' as const, label: 'Features', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#0d1117' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#f97316' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#ffffff' },

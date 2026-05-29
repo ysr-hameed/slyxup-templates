@@ -53,7 +53,7 @@ function TipsCard({ tips, textColor, accentColor }: { tips: string[]; textColor:
 
 export const StudyTipsSchema = {
   title: { type: 'text' as const, label: 'Title', required: true },
-  tips: { type: 'list' as const, label: 'Study Tips', itemType: 'text', required: true },
+  tips: { type: 'list' as const, label: 'Study Tips', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#0a0a1a' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#6366f1' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#ffffff' },

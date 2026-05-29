@@ -51,7 +51,7 @@ function StrategyCard({ points, textColor, accentColor }: { points: string[]; te
 
 export const BrandStrategySchema = {
   title: { type: 'text' as const, label: 'Strategy Title', required: true },
-  points: { type: 'list' as const, label: 'Strategy Points', itemType: 'text', required: true },
+  points: { type: 'list' as const, label: 'Strategy Points', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#0f0a1a' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#a855f7' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#ffffff' },

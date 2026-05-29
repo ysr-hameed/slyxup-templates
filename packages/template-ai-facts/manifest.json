@@ -1,0 +1,21 @@
+{
+  "id": "ai-facts",
+  "slug": "ai-facts",
+  "name": "AI Facts / Subtitle Video",
+  "version": "1.0.0",
+  "description": "Multiple facts with animated subtitle cards",
+  "category": "video",
+  "platform": "tiktok",
+  "format": "video",
+  "dimensions": { "width": 1080, "height": 1920 },
+  "durationInFrames": 450,
+  "fps": 30,
+  "schema": {
+    "title": { "type": "text", "label": "Title", "required": false },
+    "facts": { "type": "list", "label": "Facts", "itemType": "text", "required": true }
+  },
+  "defaultProps": { "title": "", "facts": ["AI can detect cancer earlier than doctors", "GPT-4 passed the bar exam", "Self-driving cars use 7+ sensors"] },
+  "tags": ["ai", "facts", "subtitle", "educational"],
+  "premium": false,
+  "entry": "./dist/index.js"
+}

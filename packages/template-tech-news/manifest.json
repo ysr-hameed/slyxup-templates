@@ -1,0 +1,25 @@
+{
+  "id": "tech-news",
+  "slug": "tech-news",
+  "name": "Tech News",
+  "version": "1.0.0",
+  "description": "Tech news headline with animated code background",
+  "category": "video",
+  "platform": "generic",
+  "format": "video",
+  "dimensions": { "width": 1080, "height": 1920 },
+  "durationInFrames": 900,
+  "fps": 30,
+  "schema": {
+    "headline": { "type": "text", "label": "Headline", "required": true },
+    "summary": { "type": "text", "label": "Summary", "required": true },
+    "source": { "type": "text", "label": "Source", "required": false },
+    "bgColor": { "type": "color", "label": "Background Color", "default": "#0d1117" },
+    "accentColor": { "type": "color", "label": "Accent Color", "default": "#58a6ff" },
+    "textColor": { "type": "color", "label": "Text Color", "default": "#ffffff" }
+  },
+  "defaultProps": { "headline": "AI Model Achieves Human-Level Reasoning", "summary": "New model surpasses benchmarks", "source": "TechCrunch", "bgColor": "#0d1117", "accentColor": "#58a6ff", "textColor": "#ffffff" },
+  "tags": ["tech", "news", "coding", "ai", "animated"],
+  "premium": false,
+  "entry": "./dist/index.js"
+}

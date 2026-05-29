@@ -4,7 +4,7 @@ import { AbsoluteFill } from 'remotion'
 export const AppShowcaseSchema = {
   appName: { type: 'text' as const, label: 'App Name', required: true },
   tagline: { type: 'text' as const, label: 'Tagline', required: true },
-  features: { type: 'list' as const, label: 'Key Features', itemType: 'text', required: true },
+  features: { type: 'list' as const, label: 'Key Features', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#0d1117' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#8b5cf6' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#ffffff' },

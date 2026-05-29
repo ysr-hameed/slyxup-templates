@@ -3,7 +3,7 @@ import { AbsoluteFill } from 'remotion'
 
 export const ConceptMapSchema = {
   topic: { type: 'text' as const, label: 'Main Topic', required: true },
-  subtopics: { type: 'list' as const, label: 'Subtopics', itemType: 'text', required: true },
+  subtopics: { type: 'list' as const, label: 'Subtopics', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#0a0a1a' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#06b6d4' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#ffffff' },

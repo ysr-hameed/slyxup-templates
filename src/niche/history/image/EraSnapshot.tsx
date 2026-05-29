@@ -4,7 +4,7 @@ import { AbsoluteFill } from 'remotion'
 export const EraSnapshotSchema = {
   era: { type: 'text' as const, label: 'Era Name', required: true },
   period: { type: 'text' as const, label: 'Time Period', required: true },
-  highlights: { type: 'list' as const, label: 'Key Highlights', itemType: 'text', required: true },
+  highlights: { type: 'list' as const, label: 'Key Highlights', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#1c1108' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#d4a574' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#f5e6d3' },

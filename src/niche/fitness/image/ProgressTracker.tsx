@@ -4,7 +4,7 @@ import { AbsoluteFill } from 'remotion'
 export const ProgressTrackerSchema = {
   title: { type: 'text' as const, label: 'Title', required: true },
   metric: { type: 'text' as const, label: 'Metric/Value', required: true },
-  milestones: { type: 'list' as const, label: 'Milestones', itemType: 'text', required: true },
+  milestones: { type: 'list' as const, label: 'Milestones', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#1a0a0a' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#22c55e' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#ffffff' },

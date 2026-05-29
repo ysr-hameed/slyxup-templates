@@ -16,7 +16,7 @@ const manifest: TemplateManifest = {
   fps: 30,
   schema: {
     title: { type: 'text', label: 'Title', required: false },
-    facts: { type: 'list', label: 'Facts', itemType: 'text', required: true },
+    facts: { type: 'list', label: 'Facts', itemType: 'text' as const, required: true },
   },
   defaultProps: { title: 'AI Facts', facts: ['Fact one', 'Fact two'] },
   tags: ['ai', 'facts', 'subtitle', 'educational'],

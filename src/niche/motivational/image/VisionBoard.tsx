@@ -3,7 +3,7 @@ import { AbsoluteFill } from 'remotion'
 
 export const VisionBoardSchema = {
   goal: { type: 'text' as const, label: 'Main Goal', required: true },
-  steps: { type: 'list' as const, label: 'Steps', itemType: 'text', required: true },
+  steps: { type: 'list' as const, label: 'Steps', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#0f0f23' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#818cf8' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#ffffff' },

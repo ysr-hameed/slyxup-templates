@@ -3,7 +3,7 @@ import { AbsoluteFill } from 'remotion'
 
 export const FunnelGraphicSchema = {
   headline: { type: 'text' as const, label: 'Headline', required: true },
-  stages: { type: 'list' as const, label: 'Funnel Stages', itemType: 'text', required: true },
+  stages: { type: 'list' as const, label: 'Funnel Stages', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#0f0a1a' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#a855f7' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#ffffff' },

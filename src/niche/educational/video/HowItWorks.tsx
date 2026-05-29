@@ -55,7 +55,7 @@ function StepsCard({ steps, textColor, accentColor }: { steps: string[]; textCol
 
 export const HowItWorksSchema = {
   title: { type: 'text' as const, label: 'Title', required: true },
-  steps: { type: 'list' as const, label: 'Steps', itemType: 'text', required: true },
+  steps: { type: 'list' as const, label: 'Steps', itemType: 'text' as const, required: true },
   bgColor: { type: 'color' as const, label: 'Background Color', default: '#0a0a1a' },
   accentColor: { type: 'color' as const, label: 'Accent Color', default: '#06b6d4' },
   textColor: { type: 'color' as const, label: 'Text Color', default: '#ffffff' },

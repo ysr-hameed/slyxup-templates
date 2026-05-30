@@ -73,24 +73,27 @@ export const MarketingTipSchema = {
 export const Composition: React.FC<{
   hook: string; tip: string; result?: string
   bgColor?: string; accentColor?: string; textColor?: string
-}> = ({ hook, tip, result, bgColor = '#0f0a1a', accentColor = '#a855f7', textColor = '#ffffff' }) => {
+  contentX?: number; contentY?: number
+}> = ({ hook, tip, result, bgColor = '#0f0a1a', accentColor = '#a855f7', textColor = '#ffffff', contentX = 0, contentY = 0 }) => {
   const frame = useCurrentFrame()
   const swirl = interpolate(frame, [0, 600], [0, 360])
   return (
     <AbsoluteFill style={{ background: `linear-gradient(135deg, ${bgColor} 0%, #1a0030 50%, ${bgColor} 100%)` }}>
       <div style={{ position: 'absolute', width: 600, height: 600, borderRadius: '50%', border: `2px solid ${accentColor}15`, top: '10%', left: '20%', transform: `rotate(${swirl}deg)` }} />
       <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', border: `1px solid ${accentColor}10`, bottom: '15%', right: '15%', transform: `rotate(${-swirl}deg)` }} />
-      <Sequence from={0} durationInFrames={90}>
-        <HookCard hook={hook} />
-      </Sequence>
-      {result ? (
-        <Sequence from={90} durationInFrames={80}>
-          <ResultCard result={result} />
+      <div style={{ transform: `translate(${contentX}px, ${contentY}px)`, width: '100%', height: '100%' }}>
+        <Sequence from={0} durationInFrames={90}>
+          <HookCard hook={hook} />
         </Sequence>
-      ) : null}
-      <Sequence from={90 + (result ? 80 : 0)} durationInFrames={420}>
-        <TipCard tip={tip} />
-      </Sequence>
+        {result ? (
+          <Sequence from={90} durationInFrames={80}>
+            <ResultCard result={result} />
+          </Sequence>
+        ) : null}
+        <Sequence from={90 + (result ? 80 : 0)} durationInFrames={420}>
+          <TipCard tip={tip} />
+        </Sequence>
+      </div>
     </AbsoluteFill>
   )
 }

@@ -96,7 +96,8 @@ export const FinanceTipSchema = {
 export const Composition: React.FC<{
   title: string; tip: string; stat?: string
   bgColor?: string; accentColor?: string; textColor?: string
-}> = ({ title, tip, stat, bgColor = '#001a0a', accentColor = '#10b981', textColor = '#ffffff' }) => {
+  contentX?: number; contentY?: number
+}> = ({ title, tip, stat, bgColor = '#001a0a', accentColor = '#10b981', textColor = '#ffffff', contentX = 0, contentY = 0 }) => {
   const frame = useCurrentFrame()
   const pulse = interpolate(Math.sin(frame * 0.02), [-1, 1], [0.2, 0.5])
   return (
@@ -106,17 +107,19 @@ export const Composition: React.FC<{
         background: `radial-gradient(circle at 50% 50%, ${accentColor}${Math.round(pulse * 100).toString(16).padStart(2, '0')} 0%, transparent 60%)`,
       }} />
       <Particles />
-      <Sequence from={0} durationInFrames={90}>
-        <TitleCard title={title} />
-      </Sequence>
-      {stat ? (
-        <Sequence from={90} durationInFrames={80}>
-          <StatCard stat={stat} />
+      <div style={{ transform: `translate(${contentX}px, ${contentY}px)`, width: '100%', height: '100%' }}>
+        <Sequence from={0} durationInFrames={90}>
+          <TitleCard title={title} />
         </Sequence>
-      ) : null}
-      <Sequence from={90 + (stat ? 80 : 0)} durationInFrames={330}>
-        <TipCard tip={tip} />
-      </Sequence>
+        {stat ? (
+          <Sequence from={90} durationInFrames={80}>
+            <StatCard stat={stat} />
+          </Sequence>
+        ) : null}
+        <Sequence from={90 + (stat ? 80 : 0)} durationInFrames={330}>
+          <TipCard tip={tip} />
+        </Sequence>
+      </div>
     </AbsoluteFill>
   )
 }

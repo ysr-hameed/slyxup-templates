@@ -75,16 +75,19 @@ export const HistoryFactSchema = {
 export const Composition: React.FC<{
   year: string; fact: string; significance?: string
   bgColor?: string; accentColor?: string; textColor?: string
-}> = ({ year, fact, significance, bgColor = '#1c1108', accentColor = '#d4a574', textColor = '#f5e6d3' }) => {
+  contentX?: number; contentY?: number
+}> = ({ year, fact, significance, bgColor = '#1c1108', accentColor = '#d4a574', textColor = '#f5e6d3', contentX = 0, contentY = 0 }) => {
   return (
     <AbsoluteFill style={{ background: `linear-gradient(180deg, ${bgColor} 0%, #2a1a0a 50%, ${bgColor} 100%)` }}>
       <VignetteOverlay />
-      <Sequence from={0} durationInFrames={120}>
-        <YearCard year={year} />
-      </Sequence>
-      <Sequence from={120} durationInFrames={480}>
-        <FactCard fact={fact} significance={significance} />
-      </Sequence>
+      <div style={{ transform: `translate(${contentX}px, ${contentY}px)`, width: '100%', height: '100%' }}>
+        <Sequence from={0} durationInFrames={120}>
+          <YearCard year={year} />
+        </Sequence>
+        <Sequence from={120} durationInFrames={480}>
+          <FactCard fact={fact} significance={significance} />
+        </Sequence>
+      </div>
     </AbsoluteFill>
   )
 }

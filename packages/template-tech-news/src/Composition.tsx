@@ -96,19 +96,22 @@ export const TechNewsSchema = {
 export const Composition: React.FC<{
   headline: string; summary: string; source?: string
   bgColor?: string; accentColor?: string; textColor?: string
-}> = ({ headline, summary, source, bgColor = '#0d1117', accentColor = '#58a6ff', textColor = '#ffffff' }) => {
+  contentX?: number; contentY?: number
+}> = ({ headline, summary, source, bgColor = '#0d1117', accentColor = '#58a6ff', textColor = '#ffffff', contentX = 0, contentY = 0 }) => {
   return (
     <AbsoluteFill style={{ background: `linear-gradient(135deg, ${bgColor} 0%, #161b22 50%, ${bgColor} 100%)` }}>
       <CodeBackground />
-      <Sequence from={0} durationInFrames={HEADLINE_DURATION}>
-        <AbsoluteFill>
-          <HeaderTag />
-          <HeadlineCard headline={headline} />
-        </AbsoluteFill>
-      </Sequence>
-      <Sequence from={HEADLINE_DURATION} durationInFrames={SUMMARY_DURATION}>
-        <SummaryCard summary={summary} source={source} />
-      </Sequence>
+      <div style={{ transform: `translate(${contentX}px, ${contentY}px)`, width: '100%', height: '100%' }}>
+        <Sequence from={0} durationInFrames={HEADLINE_DURATION}>
+          <AbsoluteFill>
+            <HeaderTag />
+            <HeadlineCard headline={headline} />
+          </AbsoluteFill>
+        </Sequence>
+        <Sequence from={HEADLINE_DURATION} durationInFrames={SUMMARY_DURATION}>
+          <SummaryCard summary={summary} source={source} />
+        </Sequence>
+      </div>
     </AbsoluteFill>
   )
 }

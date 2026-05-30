@@ -61,20 +61,23 @@ export const AiFactsSchema = {
 
 export const Composition: React.FC<{
   title?: string; facts: string[]
-}> = ({ title, facts }) => {
+  contentX?: number; contentY?: number
+}> = ({ title, facts, contentX = 0, contentY = 0 }) => {
   return (
     <AbsoluteFill style={{ background: BG }}>
       <GridBackground />
-      {title ? (
-        <Sequence from={0} durationInFrames={TITLE_DURATION}>
-          <TitleCard title={title} />
-        </Sequence>
-      ) : null}
-      {facts.map((fact, i) => (
-        <Sequence key={i} from={title ? TITLE_DURATION + i * FACT_DURATION : i * FACT_DURATION} durationInFrames={FACT_DURATION}>
-          <FactCard fact={fact} index={i} />
-        </Sequence>
-      ))}
+      <div style={{ transform: `translate(${contentX}px, ${contentY}px)`, width: '100%', height: '100%' }}>
+        {title ? (
+          <Sequence from={0} durationInFrames={TITLE_DURATION}>
+            <TitleCard title={title} />
+          </Sequence>
+        ) : null}
+        {facts.map((fact, i) => (
+          <Sequence key={i} from={title ? TITLE_DURATION + i * FACT_DURATION : i * FACT_DURATION} durationInFrames={FACT_DURATION}>
+            <FactCard fact={fact} index={i} />
+          </Sequence>
+        ))}
+      </div>
     </AbsoluteFill>
   )
 }

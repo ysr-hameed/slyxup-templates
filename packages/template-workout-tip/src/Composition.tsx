@@ -66,18 +66,21 @@ export const WorkoutTipSchema = {
 export const Composition: React.FC<{
   exercise: string; tip: string; duration?: string
   bgColor?: string; accentColor?: string; textColor?: string
-}> = ({ exercise, tip, duration, bgColor = '#1a0a0a', accentColor = '#f97316', textColor = '#ffffff' }) => {
+  contentX?: number; contentY?: number
+}> = ({ exercise, tip, duration, bgColor = '#1a0a0a', accentColor = '#f97316', textColor = '#ffffff', contentX = 0, contentY = 0 }) => {
   const frame = useCurrentFrame()
   const glowIntensity = interpolate(Math.sin(frame * 0.03), [-1, 1], [0.15, 0.35])
   return (
     <AbsoluteFill style={{ background: `linear-gradient(135deg, ${bgColor} 0%, #3d0a0a 50%, ${bgColor} 100%)` }}>
       <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(circle at 80% 20%, ${accentColor}${Math.round(glowIntensity * 100).toString(16).padStart(2, '0')} 0%, transparent 60%)` }} />
-      <Sequence from={0} durationInFrames={120}>
-        <ExerciseCard exercise={exercise} duration={duration} />
-      </Sequence>
-      <Sequence from={120} durationInFrames={450}>
-        <TipCard tip={tip} />
-      </Sequence>
+      <div style={{ transform: `translate(${contentX}px, ${contentY}px)`, width: '100%', height: '100%' }}>
+        <Sequence from={0} durationInFrames={120}>
+          <ExerciseCard exercise={exercise} duration={duration} />
+        </Sequence>
+        <Sequence from={120} durationInFrames={450}>
+          <TipCard tip={tip} />
+        </Sequence>
+      </div>
     </AbsoluteFill>
   )
 }

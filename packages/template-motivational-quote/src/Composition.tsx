@@ -74,16 +74,19 @@ export const Composition: React.FC<{
   quote: string
   author: string
   textColor?: string
-}> = ({ quote, author, textColor = '#ffffff' }) => {
+  contentX?: number; contentY?: number
+}> = ({ quote, author, textColor = '#ffffff', contentX = 0, contentY = 0 }) => {
   return (
     <AbsoluteFill>
       <GlowBackground />
-      <Sequence from={0} durationInFrames={90}>
-        <QuoteText quote={quote} color={textColor} />
-      </Sequence>
-      <Sequence from={30} durationInFrames={60}>
-        <AuthorText author={author} />
-      </Sequence>
+      <div style={{ transform: `translate(${contentX}px, ${contentY}px)`, width: '100%', height: '100%' }}>
+        <Sequence from={0} durationInFrames={90}>
+          <QuoteText quote={quote} color={textColor} />
+        </Sequence>
+        <Sequence from={30} durationInFrames={60}>
+          <AuthorText author={author} />
+        </Sequence>
+      </div>
     </AbsoluteFill>
   )
 }

@@ -1,41 +1,21 @@
 import React from 'react'
 import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig, Sequence } from 'remotion'
 
-const YEAR_DURATION = 180
-const FACT_DURATION = 720
+const ACCENT = '#d4a574'
+const BG = 'linear-gradient(180deg, #2a1a0a, #1c1108)'
 
-function YearCard({ year, accentColor }: { year: string; accentColor: string }) {
+function YearCard({ year }: { year: string }) {
   const frame = useCurrentFrame()
   const { fps } = useVideoConfig()
-  const opacity = interpolate(frame, [0, 20, 140, 180], [0, 1, 1, 0])
-  const scale = spring({ frame, fps, config: { damping: 8, stiffness: 100 } })
-
+  const opacity = interpolate(frame, [0, 15, 90, 120], [0, 1, 1, 0])
+  const scale = spring({ frame, fps, config: { damping: 10, stiffness: 120 } })
   return (
     <AbsoluteFill style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{
-        textAlign: 'center',
-        opacity,
-        transform: `scale(${scale})`,
-      }}>
-        <span style={{
-          color: accentColor,
-          fontSize: 24,
-          fontWeight: 700,
-          letterSpacing: 4,
-          textTransform: 'uppercase',
-          fontFamily: 'system-ui, sans-serif',
-        }}>
+      <div style={{ textAlign: 'center', opacity, transform: `scale(${scale})` }}>
+        <span style={{ color: ACCENT, fontSize: 20, fontWeight: 700, letterSpacing: 5, textTransform: 'uppercase', fontFamily: 'system-ui, sans-serif' }}>
           Did You Know?
         </span>
-        <p style={{
-          color: '#ffffff',
-          fontSize: 120,
-          fontWeight: 900,
-          fontFamily: 'Georgia, serif',
-          margin: '16px 0 0',
-          lineHeight: 1,
-          textShadow: `0 2px 40px ${accentColor}40`,
-        }}>
+        <p style={{ color: '#ffffff', fontSize: 160, fontWeight: 900, fontFamily: 'Georgia, serif', margin: '16px 0 0', lineHeight: 1, textShadow: `0 4px 60px ${ACCENT}50` }}>
           {year}
         </p>
       </div>
@@ -43,50 +23,28 @@ function YearCard({ year, accentColor }: { year: string; accentColor: string }) 
   )
 }
 
-function FactCard({ fact, significance, textColor, accentColor }: {
-  fact: string; significance?: string; textColor: string; accentColor: string
-}) {
+function FactCard({ fact, significance }: { fact: string; significance?: string }) {
   const frame = useCurrentFrame()
   const { fps } = useVideoConfig()
-  const enter = spring({ frame, fps, config: { damping: 14, stiffness: 50 } })
-  const opacity = interpolate(frame, [0, 30, 680, 720], [0, 1, 1, 0])
-  const slideY = interpolate(enter, [0, 1], [35, 0])
+  const enter = spring({ frame, fps, config: { damping: 16, stiffness: 70 } })
+  const opacity = interpolate(frame, [0, 15, 450, 480], [0, 1, 1, 0])
+  const slideY = interpolate(enter, [0, 1], [25, 0])
 
   return (
     <AbsoluteFill style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{
-        opacity,
-        transform: `translateY(${slideY}px)`,
-        padding: '0 50px',
-        maxWidth: 980,
-        textAlign: 'center',
-      }}>
+      <div style={{ opacity, transform: `translateY(${slideY}px)`, padding: '0 50px', maxWidth: 980, textAlign: 'center' }}>
         <div style={{
-          borderTop: `2px solid ${accentColor}`,
-          borderBottom: `2px solid ${accentColor}`,
-          padding: '32px 24px',
+          borderTop: `2px solid ${ACCENT}`, borderBottom: `2px solid ${ACCENT}`,
+          padding: '36px 28px', position: 'relative',
         }}>
-          <p style={{
-            color: textColor,
-            fontSize: 38,
-            fontWeight: 400,
-            lineHeight: 1.5,
-            fontFamily: 'Georgia, serif',
-            margin: 0,
-            fontStyle: 'italic',
-          }}>
-            "{fact}"
+          <span style={{ position: 'absolute', top: -8, left: 16, color: ACCENT, fontSize: 48, fontFamily: 'Georgia, serif', lineHeight: 1 }}>&ldquo;</span>
+          <p style={{ color: '#f5e6d3', fontSize: 48, fontWeight: 400, lineHeight: 1.5, fontFamily: 'Georgia, serif', margin: 0, fontStyle: 'italic' }}>
+            {fact}
           </p>
+          <span style={{ position: 'absolute', bottom: -40, right: 16, color: ACCENT, fontSize: 48, fontFamily: 'Georgia, serif', lineHeight: 1 }}>&rdquo;</span>
         </div>
         {significance ? (
-          <p style={{
-            color: accentColor,
-            fontSize: 22,
-            fontWeight: 600,
-            marginTop: 32,
-            fontFamily: 'system-ui, sans-serif',
-            letterSpacing: 1,
-          }}>
+          <p style={{ color: ACCENT, fontSize: 24, fontWeight: 600, marginTop: 32, fontFamily: 'system-ui, sans-serif', letterSpacing: 1 }}>
             {significance}
           </p>
         ) : null}
@@ -98,25 +56,8 @@ function FactCard({ fact, significance, textColor, accentColor }: {
 function VignetteOverlay() {
   return (
     <div style={{
-      position: 'absolute',
-      inset: 0,
-      background: 'radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.6) 100%)',
-      pointerEvents: 'none',
-    }} />
-  )
-}
-
-function GrainOverlay() {
-  const frame = useCurrentFrame()
-  const noise = interpolate(frame % 4, [0, 3], [0, 0.04])
-
-  return (
-    <div style={{
-      position: 'absolute',
-      inset: 0,
-      opacity: noise,
-      backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.5\'/%3E%3C/svg%3E")',
-      backgroundSize: '256px 256px',
+      position: 'absolute', inset: 0,
+      background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.7) 100%)',
       pointerEvents: 'none',
     }} />
   )
@@ -132,24 +73,17 @@ export const HistoryFactSchema = {
 }
 
 export const Composition: React.FC<{
-  year: string
-  fact: string
-  significance?: string
-  bgColor?: string
-  accentColor?: string
-  textColor?: string
+  year: string; fact: string; significance?: string
+  bgColor?: string; accentColor?: string; textColor?: string
 }> = ({ year, fact, significance, bgColor = '#1c1108', accentColor = '#d4a574', textColor = '#f5e6d3' }) => {
   return (
-    <AbsoluteFill style={{
-      background: `linear-gradient(135deg, ${bgColor} 0%, #2a1a0a 50%, ${bgColor} 100%)`,
-    }}>
+    <AbsoluteFill style={{ background: `linear-gradient(180deg, ${bgColor} 0%, #2a1a0a 50%, ${bgColor} 100%)` }}>
       <VignetteOverlay />
-      <GrainOverlay />
-      <Sequence from={0} durationInFrames={YEAR_DURATION}>
-        <YearCard year={year} accentColor={accentColor} />
+      <Sequence from={0} durationInFrames={120}>
+        <YearCard year={year} />
       </Sequence>
-      <Sequence from={YEAR_DURATION} durationInFrames={FACT_DURATION}>
-        <FactCard fact={fact} significance={significance} textColor={textColor} accentColor={accentColor} />
+      <Sequence from={120} durationInFrames={480}>
+        <FactCard fact={fact} significance={significance} />
       </Sequence>
     </AbsoluteFill>
   )

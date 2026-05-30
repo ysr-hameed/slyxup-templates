@@ -1,7 +1,7 @@
 import { registerTemplate } from '@slyxup/templates-core'
 import type { TemplateManifest } from '@slyxup/templates-core'
 import manifesto from '../manifest.json' with { type: 'json' }
-import { Composition } from './Composition'
+import { Composition } from './Composition.js'
 
 const manifest = manifesto as unknown as TemplateManifest
 
@@ -19,4 +19,4 @@ registerTemplate(manifest.id, async () => ({
 }))
 
 export { Composition, manifest }
-export { WorkoutTipSchema } from './Composition'
+export { WorkoutTipSchema } from './Composition.js'

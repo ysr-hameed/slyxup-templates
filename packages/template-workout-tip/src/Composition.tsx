@@ -1,72 +1,30 @@
 import React from 'react'
 import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig, Sequence } from 'remotion'
 
-const EXERCISE_DURATION = 180
-const TIP_DURATION = 720
+const ACCENT = '#f97316'
+const BG = 'linear-gradient(135deg, #1a0505 0%, #3d0a0a 50%, #1a0505 100%)'
 
-function ExerciseCard({ exercise, duration, accentColor }: {
-  exercise: string; duration?: string; accentColor: string
-}) {
+function ExerciseCard({ exercise, duration }: { exercise: string; duration?: string }) {
   const frame = useCurrentFrame()
   const { fps } = useVideoConfig()
-  const enter = spring({ frame, fps, config: { damping: 10, stiffness: 90 } })
-  const opacity = interpolate(frame, [0, 20, 140, 180], [0, 1, 1, 0])
-  const scale = interpolate(enter, [0, 1], [0.8, 1])
-
-  const barProgress = interpolate(frame, [20, 140], [0, 1])
-
+  const enter = spring({ frame, fps, config: { damping: 12, stiffness: 110 } })
+  const opacity = interpolate(frame, [0, 15, 90, 120], [0, 1, 1, 0])
+  const scale = interpolate(enter, [0, 1], [0.85, 1])
+  const barProgress = interpolate(frame, [15, 100], [0, 1])
   return (
     <AbsoluteFill style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{
-        textAlign: 'center',
-        opacity,
-        transform: `scale(${scale})`,
-        padding: '0 40px',
-      }}>
-        <span style={{
-          color: 'rgba(255,255,255,0.4)',
-          fontSize: 16,
-          fontWeight: 700,
-          letterSpacing: 3,
-          textTransform: 'uppercase',
-          fontFamily: 'system-ui, sans-serif',
-        }}>
+      <div style={{ textAlign: 'center', opacity, transform: `scale(${scale})`, padding: '0 40px' }}>
+        <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 16, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', fontFamily: 'system-ui, sans-serif' }}>
           Today's Exercise
         </span>
-        <h1 style={{
-          color: '#ffffff',
-          fontSize: 72,
-          fontWeight: 900,
-          fontFamily: 'system-ui, sans-serif',
-          margin: '20px 0 16px',
-          lineHeight: 1.1,
-        }}>
+        <h1 style={{ color: '#ffffff', fontSize: 96, fontWeight: 900, fontFamily: 'system-ui, sans-serif', margin: '16px 0 20px', lineHeight: 1.05 }}>
           {exercise}
         </h1>
-        <div style={{
-          height: 6,
-          background: 'rgba(255,255,255,0.1)',
-          borderRadius: 3,
-          margin: '24px auto',
-          maxWidth: 400,
-          overflow: 'hidden',
-        }}>
-          <div style={{
-            height: '100%',
-            width: `${barProgress * 100}%`,
-            background: accentColor,
-            borderRadius: 3,
-            transition: 'width 0.1s',
-          }} />
+        <div style={{ height: 8, background: 'rgba(255,255,255,0.1)', borderRadius: 4, margin: '24px auto', maxWidth: 400, overflow: 'hidden' }}>
+          <div style={{ height: '100%', width: `${barProgress * 100}%`, background: ACCENT, borderRadius: 4, boxShadow: `0 0 12px ${ACCENT}` }} />
         </div>
         {duration ? (
-          <p style={{
-            color: accentColor,
-            fontSize: 28,
-            fontWeight: 700,
-            fontFamily: 'system-ui, sans-serif',
-            margin: 0,
-          }}>
+          <p style={{ color: ACCENT, fontSize: 36, fontWeight: 800, fontFamily: 'system-ui, sans-serif', margin: 0 }}>
             {duration}
           </p>
         ) : null}
@@ -75,42 +33,20 @@ function ExerciseCard({ exercise, duration, accentColor }: {
   )
 }
 
-function TipCard({ tip, textColor, accentColor }: { tip: string; textColor: string; accentColor: string }) {
+function TipCard({ tip }: { tip: string }) {
   const frame = useCurrentFrame()
   const { fps } = useVideoConfig()
-  const enter = spring({ frame, fps, config: { damping: 14, stiffness: 65 } })
-  const opacity = interpolate(frame, [0, 25, 690, 720], [0, 1, 1, 0])
-  const slideY = interpolate(enter, [0, 1], [30, 0])
-
+  const enter = spring({ frame, fps, config: { damping: 16, stiffness: 75 } })
+  const opacity = interpolate(frame, [0, 15, 420, 450], [0, 1, 1, 0])
+  const slideY = interpolate(enter, [0, 1], [20, 0])
   return (
     <AbsoluteFill style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{
-        opacity,
-        transform: `translateY(${slideY}px)`,
-        padding: '0 50px',
-        maxWidth: 980,
-        textAlign: 'center',
-        position: 'relative',
+        opacity, transform: `translateY(${slideY}px)`,
+        padding: '0 50px', maxWidth: 980, textAlign: 'center', position: 'relative',
       }}>
-        <div style={{
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          bottom: 0,
-          width: 4,
-          background: accentColor,
-          borderRadius: 2,
-        }} />
-        <p style={{
-          color: textColor,
-          fontSize: 40,
-          fontWeight: 450,
-          lineHeight: 1.5,
-          fontFamily: 'Georgia, serif',
-          margin: 0,
-          paddingLeft: 24,
-          textAlign: 'left',
-        }}>
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 5, background: ACCENT, borderRadius: 3, boxShadow: `0 0 10px ${ACCENT}` }} />
+        <p style={{ color: '#ffffff', fontSize: 48, fontWeight: 450, lineHeight: 1.5, fontFamily: 'Georgia, serif', margin: 0, paddingLeft: 28, textAlign: 'left' }}>
           {tip}
         </p>
       </div>
@@ -128,30 +64,19 @@ export const WorkoutTipSchema = {
 }
 
 export const Composition: React.FC<{
-  exercise: string
-  tip: string
-  duration?: string
-  bgColor?: string
-  accentColor?: string
-  textColor?: string
+  exercise: string; tip: string; duration?: string
+  bgColor?: string; accentColor?: string; textColor?: string
 }> = ({ exercise, tip, duration, bgColor = '#1a0a0a', accentColor = '#f97316', textColor = '#ffffff' }) => {
   const frame = useCurrentFrame()
-  const glowIntensity = interpolate(Math.sin(frame * 0.03), [-1, 1], [0.1, 0.3])
-
+  const glowIntensity = interpolate(Math.sin(frame * 0.03), [-1, 1], [0.15, 0.35])
   return (
-    <AbsoluteFill style={{
-      background: bgColor,
-    }}>
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        background: `radial-gradient(circle at 80% 20%, ${accentColor}${Math.round(glowIntensity * 100).toString(16).padStart(2, '0')} 0%, transparent 60%)`,
-      }} />
-      <Sequence from={0} durationInFrames={EXERCISE_DURATION}>
-        <ExerciseCard exercise={exercise} duration={duration} accentColor={accentColor} />
+    <AbsoluteFill style={{ background: `linear-gradient(135deg, ${bgColor} 0%, #3d0a0a 50%, ${bgColor} 100%)` }}>
+      <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(circle at 80% 20%, ${accentColor}${Math.round(glowIntensity * 100).toString(16).padStart(2, '0')} 0%, transparent 60%)` }} />
+      <Sequence from={0} durationInFrames={120}>
+        <ExerciseCard exercise={exercise} duration={duration} />
       </Sequence>
-      <Sequence from={EXERCISE_DURATION} durationInFrames={TIP_DURATION}>
-        <TipCard tip={tip} textColor={textColor} accentColor={accentColor} />
+      <Sequence from={120} durationInFrames={450}>
+        <TipCard tip={tip} />
       </Sequence>
     </AbsoluteFill>
   )

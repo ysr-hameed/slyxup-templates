@@ -1,6 +1,6 @@
 {
   "name": "@slyxup/template-ai-facts",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "private": false,
   "type": "module",
   "main": "dist/index.js",

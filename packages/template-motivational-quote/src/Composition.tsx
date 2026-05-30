@@ -1,17 +1,18 @@
 import React from 'react'
 import { AbsoluteFill, useCurrentFrame, useVideoConfig, interpolate, spring, Sequence } from 'remotion'
 
-const GRADIENT_COLORS = ['#0f0c29', '#302b63', '#24243e']
+const GLOW_PURPLE = '#7c3aed'
+const BG = 'linear-gradient(135deg, #1a0030 0%, #4a0080 50%, #1a0030 100%)'
 
-function Background() {
+function GlowBackground() {
+  const frame = useCurrentFrame()
+  const pulse = interpolate(Math.sin(frame * 0.05), [-1, 1], [0.3, 0.6])
   return (
-    <AbsoluteFill style={{
-      background: `linear-gradient(135deg, ${GRADIENT_COLORS.join(', ')})`,
-    }}>
+    <AbsoluteFill style={{ background: BG }}>
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'radial-gradient(circle at 30% 40%, rgba(255,255,255,0.05) 0%, transparent 60%)',
+        background: `radial-gradient(circle at 50% 40%, ${GLOW_PURPLE}${Math.round(pulse * 100).toString(16).padStart(2, '0')} 0%, transparent 60%)`,
       }} />
     </AbsoluteFill>
   )
@@ -20,29 +21,21 @@ function Background() {
 function QuoteText({ quote, color }: { quote: string; color: string }) {
   const frame = useCurrentFrame()
   const { fps } = useVideoConfig()
-  const progress = spring({ frame, fps, config: { damping: 14, stiffness: 70 } })
-  const opacity = interpolate(frame, [0, 20], [0, 1])
+  const progress = spring({ frame, fps, config: { damping: 16, stiffness: 90 } })
+  const opacity = interpolate(frame, [0, 12], [0, 1])
 
   return (
     <div style={{
-      position: 'absolute',
-      inset: 0,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '80px 60px',
-      opacity,
-      transform: `scale(${interpolate(progress, [0, 1], [0.9, 1])}) translateY(${interpolate(progress, [0, 1], [20, 0])}px)`,
+      position: 'absolute', inset: 0,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      padding: '80px 60px', opacity,
+      transform: `scale(${interpolate(progress, [0, 1], [0.92, 1])}) translateY(${interpolate(progress, [0, 1], [15, 0])}px)`,
     }}>
       <p style={{
-        color,
-        fontSize: 56,
-        fontWeight: 700,
-        lineHeight: 1.3,
-        textAlign: 'center',
-        fontFamily: 'Georgia, "Times New Roman", serif',
-        textShadow: '0 2px 20px rgba(0,0,0,0.3)',
-        margin: 0,
+        color, fontSize: 88, fontWeight: 800, lineHeight: 1.15,
+        textAlign: 'center', fontFamily: 'Georgia, serif',
+        textShadow: '0 4px 30px rgba(124,58,237,0.4)',
+        margin: 0, maxWidth: 960,
       }}>
         &ldquo;{quote}&rdquo;
       </p>
@@ -52,24 +45,17 @@ function QuoteText({ quote, color }: { quote: string; color: string }) {
 
 function AuthorText({ author }: { author: string }) {
   const frame = useCurrentFrame()
-  const opacity = interpolate(frame, [60, 90], [0, 1])
-  const y = interpolate(frame, [60, 90], [10, 0])
+  const opacity = interpolate(frame, [30, 50], [0, 1])
+  const y = interpolate(frame, [30, 50], [8, 0])
 
   return (
     <div style={{
-      position: 'absolute',
-      bottom: 120,
-      left: 0,
-      right: 0,
-      textAlign: 'center',
-      opacity,
-      transform: `translateY(${y}px)`,
+      position: 'absolute', bottom: 100, left: 0, right: 0,
+      textAlign: 'center', opacity, transform: `translateY(${y}px)`,
     }}>
       <p style={{
-        color: 'rgba(255,255,255,0.7)',
-        fontSize: 28,
-        fontFamily: 'system-ui, sans-serif',
-        letterSpacing: 2,
+        color: 'rgba(255,255,255,0.75)', fontSize: 36,
+        fontFamily: 'system-ui, sans-serif', letterSpacing: 3,
         margin: 0,
       }}>
         — {author}
@@ -91,11 +77,11 @@ export const Composition: React.FC<{
 }> = ({ quote, author, textColor = '#ffffff' }) => {
   return (
     <AbsoluteFill>
-      <Background />
-      <Sequence from={0} durationInFrames={150}>
+      <GlowBackground />
+      <Sequence from={0} durationInFrames={90}>
         <QuoteText quote={quote} color={textColor} />
       </Sequence>
-      <Sequence from={60} durationInFrames={90}>
+      <Sequence from={30} durationInFrames={60}>
         <AuthorText author={author} />
       </Sequence>
     </AbsoluteFill>

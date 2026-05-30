@@ -1,6 +1,6 @@
 {
   "name": "@slyxup/template-ai-facts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "type": "module",
   "main": "dist/index.js",
@@ -12,8 +12,13 @@
     },
     "./manifest": "./manifest.json"
   },
-  "files": ["dist", "manifest.json"],
-  "scripts": { "build": "tsc" },
+  "files": [
+    "dist",
+    "manifest.json"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
   "dependencies": {
     "react": "^19.0.0",
     "remotion": "^4.0.0",
